@@ -9,9 +9,12 @@ import { LoadingIndicator } from '../../../components/LoadingIndicator/LoadingIn
 import { Button } from '../../../components/Button/Button';
 
 import styles from './users-list-body.module.css';
+import { UsersListActions } from '../redux/users-list.actions';
 
 export function UsersListLoadMoreButton(props: React.PropsWithChildren<{}>) {
 	const { children } = props;
+
+	const dispatch = useDispatch();
 
 	const isLoadMoreAvailable = useSelectUsersListIsLoadMoreAvailable();
 	const filter = useSelectUsersListFilter();
@@ -23,7 +26,7 @@ export function UsersListLoadMoreButton(props: React.PropsWithChildren<{}>) {
 			id={styles['load-more-button']}
 			disabled={!isLoadMoreAvailable || isLoadingUsers || !!filter}
 			onClick={(e) => {
-				// getNextPage(nextToken, '');
+				dispatch(UsersListActions.getNextPage());
 			}}
 		>
 			{!isLoadingUsers ? (

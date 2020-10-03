@@ -36,6 +36,26 @@ export const usersListSlice = createSlice({
 					slice.isLoadMoreAvailable = newUsers.length > 0;
 				}
 			})
+			.addCase(UsersListActions.getNextPage.pending, (slice, action) => {
+				slice.isLoadingUsers = true;
+			})
+			.addCase(UsersListActions.getNextPage.rejected, (slice, action) => {
+				slice.isLoadMoreAvailable = false;
+				slice.isLoadingUsers = false;
+			})
+			.addCase(UsersListActions.getNextPage.fulfilled, (slice, action) => {
+				const newUsers = action.payload.users;
+				for (let newUser of newUsers) {
+					slice.users[newUser.userId] = newUser;
+				}
+
+				slice.nextToken = action.payload.nextToken.toString();
+				slice.isLoadingUsers = false;
+
+				if (!slice.filter) {
+					slice.isLoadMoreAvailable = newUsers.length > 0;
+				}
+			})
 			.addCase(UsersListActions.setFilter, (slice, action) => {
 				const newFilter = action.payload;
 				slice.filter = newFilter;
