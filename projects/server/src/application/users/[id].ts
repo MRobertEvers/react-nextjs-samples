@@ -2,6 +2,7 @@ import { Router } from 'express';
 import bodyParser from 'body-parser';
 import { Request, Response, NextFunction } from 'express';
 import { Database } from '../../database/database';
+import { mapKeysToLower } from '../../utils/map-keys-to-lower';
 
 export function userApi(database: Database) {
 	const { User } = database;
@@ -30,7 +31,7 @@ export function userApi(database: Database) {
 		});
 
 		res.status(200);
-		res.send(JSON.stringify(user.toJSON()));
+		res.send(JSON.stringify(mapKeysToLower(user.toJSON())));
 	});
 
 	app.post('/users/:id', async (req: Request, res: Response, next: NextFunction) => {
@@ -45,13 +46,22 @@ export function userApi(database: Database) {
 			return;
 		}
 
-		const [user, isNew] = await User.upsert({
+		const userModifications: any = {
 			UserId: id,
-			Name: name,
-			DOB: dob,
-			Address: address,
-			Description: description
-		});
+			Name: name
+		};
+
+		if (dob) {
+			userModifications.DOB = dob;
+		}
+		if (address) {
+			userModifications.Address = address;
+		}
+		if (description) {
+			userModifications.Description = description;
+		}
+
+		const [user, isNew] = await User.upsert(userModifications);
 
 		res.status(204);
 	});

@@ -3,6 +3,7 @@ import bodyParser from 'body-parser';
 import { Request, Response, NextFunction } from 'express';
 import { Database } from '../../database/database';
 import { Op } from 'sequelize';
+import { mapKeysToLower } from '../../utils/map-keys-to-lower';
 
 export function usersApi(database: Database) {
 	const { User } = database;
@@ -38,7 +39,7 @@ export function usersApi(database: Database) {
 		});
 
 		res.status(200);
-		res.send(JSON.stringify(users.map((user) => user.toJSON())));
+		res.send(JSON.stringify(users.map((user) => mapKeysToLower(user.toJSON()))));
 	});
 
 	app.post('/users*', async (req: Request, res: Response, next: NextFunction) => {
