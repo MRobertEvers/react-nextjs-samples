@@ -1,8 +1,8 @@
 import { Router } from 'express';
 import bodyParser from 'body-parser';
-import type { Request, Response, NextFunction } from 'express';
+import { Request, Response, NextFunction } from 'express';
 import { Database } from '../../database/database';
-import { Op } from 'sequelize/types';
+import { Op } from 'sequelize';
 
 export function usersApi(database: Database) {
 	const { User } = database;
