@@ -28,10 +28,7 @@ export async function fetchGetPages(pageStart: number, numUsers: number, filter 
 	try {
 		const pagesResult = await promiseTimeout(
 			fetch(`${REST_API}/users?${query.toString()}`, {
-				method: 'GET',
-				headers: {
-					'Content-Type': 'application/json'
-				}
+				method: 'GET'
 			}),
 			6000
 		);
