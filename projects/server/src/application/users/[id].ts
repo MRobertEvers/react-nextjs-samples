@@ -63,7 +63,7 @@ export function userApi(database: Database) {
 
 		const [user, isNew] = await User.upsert(userModifications);
 
-		res.status(204);
+		res.sendStatus(204);
 	});
 	return app;
 }

@@ -12,6 +12,8 @@ export class Database {
 		});
 
 		this.User = DefineUserModel(this.db);
+
+		this.User.sync({ force: false });
 	}
 
 	public async queryUsersPage(pageStart: number, pageSize: number, filter: string) {}

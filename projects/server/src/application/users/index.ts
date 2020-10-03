@@ -60,7 +60,7 @@ export function usersApi(database: Database) {
 			Description: description
 		});
 
-		res.status(204);
+		res.sendStatus(204);
 	});
 	return app;
 }
