@@ -36,7 +36,7 @@ export function UsersListBody() {
 	return (
 		<div className={styles['users-list-body']}>
 			{filteredUsers.map((user) => {
-				return <UsersListCard key={user.id} user={user} />;
+				return <UsersListCard key={user.userId} user={user} />;
 			})}
 		</div>
 	);

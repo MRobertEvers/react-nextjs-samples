@@ -29,7 +29,7 @@ export const usersListSlice = createSlice({
 					slice.users[newUser.id] = newUser;
 				}
 
-				slice.nextToken = action.payload.nextToken;
+				slice.nextToken = action.payload.nextToken.toString();
 				slice.isLoadingUsers = false;
 
 				if (!slice.filter) {

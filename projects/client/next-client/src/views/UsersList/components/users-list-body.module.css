@@ -6,6 +6,7 @@
 .users-list-body-header {
 	display: flex;
 	flex-direction: row;
+	align-items: center;
 }
 
 .users-list-body {

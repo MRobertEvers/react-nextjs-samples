@@ -1,3 +1,23 @@
+.user-card-grid-element {
+	flex-basis: 33.33333333%;
+	flex-grow: 0;
+	min-width: 0px;
+	display: flex;
+	position: relative;
+}
+
+@media (max-width: 1024px) {
+	.user-card-grid-element {
+		flex-basis: 50%;
+	}
+}
+
+@media (max-width: 586px) {
+	.user-card-grid-element {
+		flex-basis: 100%;
+	}
+}
+
 .users-list-card-edit {
 	visibility: hidden;
 	opacity: 0;

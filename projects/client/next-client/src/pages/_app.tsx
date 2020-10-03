@@ -17,7 +17,9 @@ export default function ApplicationContainer({ Component, pageProps }: AppProps)
 					rel="stylesheet"
 				/>
 			</Head>
-			<Component {...pageProps} />
+			<div className="application-container">
+				<Component {...pageProps} />
+			</div>
 		</Provider>
 	);
 }

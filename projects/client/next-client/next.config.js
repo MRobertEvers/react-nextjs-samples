@@ -13,6 +13,6 @@ module.exports = {
 	},
 	env: {
 		API_KEY: 'This is a super secret development API Key that is not available on the client.',
-		NEXT_PUBLIC___SYS_BACKEND_HOST_URI__: 'localhost:4000'
+		SYS_BACKEND_HOST_URI: 'http://localhost:4040'
 	}
 };

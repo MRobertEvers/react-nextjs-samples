@@ -6,7 +6,7 @@ export type APINextToken = string;
 export interface APIUserModel {
 	// I'm going to minimally require that the client ALWAYS
 	// requests the id and the name...
-	id: string;
+	userId: string;
 	name: string;
 	dob?: string;
 	address?: string;
@@ -15,10 +15,7 @@ export interface APIUserModel {
 	updatedAt?: number;
 }
 
-export interface FetchGetPagesResult {
-	users: APIUserModel[];
-	nextToken: APINextToken;
-}
+export type FetchGetPagesResult = APIUserModel[];
 
 export async function fetchGetPages(pageStart: number, numUsers: number, filter = ''): Promise<FetchGetPagesResult> {
 	const query = new URLSearchParams();
@@ -30,7 +27,7 @@ export async function fetchGetPages(pageStart: number, numUsers: number, filter 
 
 	try {
 		const pagesResult = await promiseTimeout(
-			fetch(`${REST_API}?${query.toString()}`, {
+			fetch(`${REST_API}/users?${query.toString()}`, {
 				method: 'GET',
 				headers: {
 					'Content-Type': 'application/json'
