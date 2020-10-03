@@ -31,7 +31,7 @@ export function UserCard(props: UserCardProps) {
 				style={{
 					backgroundImage: `url(${unsplashUrl})`
 				}}
-			></div>
+			/>
 			<p>
 				<span className={styles['user-card-emphasis-h2']}>{name.toUpperCase()}</span>
 				{flare}

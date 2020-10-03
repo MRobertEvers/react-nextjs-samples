@@ -8,11 +8,11 @@ export function Page(
 	const { children, title } = props;
 	const displayTitle = title || 'My App';
 	return (
-		<div>
+		<>
 			<Head>
 				<title>{displayTitle}</title>
 			</Head>
 			{children}
-		</div>
+		</>
 	);
 }

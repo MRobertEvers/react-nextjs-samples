@@ -1,1 +1,1 @@
-export { UserProfile } from './UserProfile';
+export { UserProfile, getServerSideProps } from './UserProfile';
