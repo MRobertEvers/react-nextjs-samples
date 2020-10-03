@@ -1,0 +1,46 @@
+:root {
+	--default-background-color: rgb(248, 248, 248);
+}
+
+body {
+	margin: 0px;
+	position: fixed;
+}
+
+h1 {
+	font-family: 'Source Sans Pro', sans-serif;
+	font-weight: 300;
+	font-size: 48px;
+}
+
+h2 {
+	font-family: 'Source Sans Pro', sans-serif;
+	font-weight: 600;
+	font-size: 21px;
+}
+
+p {
+	font-family: 'Source Sans Pro', sans-serif;
+	font-weight: 300;
+	font-size: 16px;
+}
+
+.user-card-grid-element {
+	flex-basis: 33.33333333%;
+	flex-grow: 0;
+	min-width: 0px;
+	display: flex;
+	position: relative;
+}
+
+@media (max-width: 1024px) {
+	.user-card-grid-element {
+		flex-basis: 50%;
+	}
+}
+
+@media (max-width: 586px) {
+	.user-card-grid-element {
+		flex-basis: 100%;
+	}
+}
