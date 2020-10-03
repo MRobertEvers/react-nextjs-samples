@@ -1,6 +1,8 @@
 import { promiseTimeout } from '../utils/promise-timeout';
 import { REST_API } from './backend-host';
 
+export type APINextToken = string;
+
 export interface APIUserModel {
 	// I'm going to minimally require that the client ALWAYS
 	// requests the id and the name...
@@ -15,7 +17,7 @@ export interface APIUserModel {
 
 export interface FetchGetPagesResult {
 	users: APIUserModel[];
-	nextToken: string;
+	nextToken: APINextToken;
 }
 
 export async function fetchGetPages(pageStart: number, numUsers: number, filter = ''): Promise<FetchGetPagesResult> {

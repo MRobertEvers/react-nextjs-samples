@@ -1,3 +1,5 @@
+import { APINextToken } from '../../../api/fetch-users-pages';
+
 export type APIUserModel = {
 	// I'm going to minimally require that the client ALWAYS
 	// requests the id and the name...
@@ -8,10 +10,6 @@ export type APIUserModel = {
 	description?: string;
 	createdAt?: number;
 	updatedAt?: number;
-};
-
-export type APINextToken = {
-	id: string;
 };
 
 export type UsersListStateUserMap = {

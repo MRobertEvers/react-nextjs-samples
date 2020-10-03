@@ -28,7 +28,13 @@ export const usersListSlice = createSlice({
 				for (let newUser of newUsers) {
 					slice.users[newUser.id] = newUser;
 				}
+
+				slice.nextToken = action.payload.nextToken;
 				slice.isLoadingUsers = false;
+
+				if (!slice.filter) {
+					slice.isLoadMoreAvailable = newUsers.length > 0;
+				}
 			})
 			.addCase(UsersListActions.setFilter, (slice, action) => {
 				const newFilter = action.payload;
