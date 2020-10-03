@@ -3,7 +3,7 @@ import * as Sequelize from 'sequelize';
 export class User extends Sequelize.Model {
 	public UserId!: number;
 	public Name!: string;
-	public DOB!: string;
+	public Dob!: string;
 	public Address!: string;
 	public Description!: string;
 	public CreatedAt!: string;
@@ -25,7 +25,7 @@ export function DefineUserModel(database: Sequelize.Sequelize): typeof User {
 				type: Sequelize.STRING(1024),
 				allowNull: false
 			},
-			DOB: {
+			Dob: {
 				type: Sequelize.STRING(1024)
 			},
 			Address: {
