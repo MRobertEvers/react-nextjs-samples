@@ -11,14 +11,14 @@ export function usersApi(database: Database) {
 	const app = Router();
 
 	app.use(bodyParser.json());
-	app.options('/users*', async (req: Request, res: Response) => {
+	app.options('/users', async (req: Request, res: Response) => {
 		res.status(200);
 		res.setHeader('Access-Control-Allow-Origin', '*');
 		res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 		res.setHeader('Access-Control-Allow-Methods', 'GET, PUT, POST');
 		res.send();
 	});
-	app.get('/users*', async (req: Request, res: Response, next: NextFunction) => {
+	app.get('/users', async (req: Request, res: Response, next: NextFunction) => {
 		res.setHeader('Access-Control-Allow-Origin', '*');
 		next();
 	});
@@ -42,7 +42,7 @@ export function usersApi(database: Database) {
 		res.send(JSON.stringify(users.map((user) => mapKeysToLower(user.toJSON()))));
 	});
 
-	app.post('/users*', async (req: Request, res: Response, next: NextFunction) => {
+	app.post('/users', async (req: Request, res: Response, next: NextFunction) => {
 		res.setHeader('Access-Control-Allow-Origin', '*');
 		next();
 	});
