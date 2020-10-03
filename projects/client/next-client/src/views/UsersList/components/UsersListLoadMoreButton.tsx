@@ -26,7 +26,7 @@ export function UsersListLoadMoreButton(props: React.PropsWithChildren<{}>) {
 				// getNextPage(nextToken, '');
 			}}
 		>
-			{!isLoadingUsers && false ? (
+			{!isLoadingUsers ? (
 				children
 			) : (
 				<LoadingIndicator style={{ width: '24px', height: '24px', margin: 'auto' }} />

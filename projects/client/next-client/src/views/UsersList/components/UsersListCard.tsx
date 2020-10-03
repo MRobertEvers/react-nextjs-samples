@@ -3,7 +3,7 @@ import useHover from '../../../hooks/useHover';
 import EditIcon from '../../../components/icons/EditIcon';
 import { concatClassNames } from '../../../utils/concat-classnames';
 import { UserCard } from '../../../components/UserCard/UserCard';
-import type { APIUserModel } from '../redux/users-list.types';
+import type { APIUserModel } from '../../../api/fetch-users-pages';
 
 import bodyStyles from './users-list-body.module.css';
 import iconStyles from './users-list-card-icon.module.css';
@@ -60,7 +60,7 @@ export function UsersListCard(props: UsersListCardProps) {
 				flare={userFlare}
 				name={user.name}
 				description={user.description}
-				id={user.id}
+				id={user.userId}
 				onClick={(e) => {
 					// getShowUser(user);
 				}}

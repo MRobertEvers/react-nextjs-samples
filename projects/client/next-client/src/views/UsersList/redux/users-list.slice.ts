@@ -26,7 +26,7 @@ export const usersListSlice = createSlice({
 			.addCase(UsersListActions.getPages.fulfilled, (slice, action) => {
 				const newUsers = action.payload.users;
 				for (let newUser of newUsers) {
-					slice.users[newUser.id] = newUser;
+					slice.users[newUser.userId] = newUser;
 				}
 
 				slice.nextToken = action.payload.nextToken.toString();
