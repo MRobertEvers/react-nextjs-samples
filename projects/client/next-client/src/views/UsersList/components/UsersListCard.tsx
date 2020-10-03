@@ -7,6 +7,7 @@ import type { APIUserModel } from '../../../api/fetch-users-pages';
 
 import bodyStyles from './users-list-body.module.css';
 import iconStyles from './users-list-card-icon.module.css';
+import { useRouter } from 'next/dist/client/router';
 
 interface UsersListCardProps {
 	user: APIUserModel;
@@ -29,7 +30,9 @@ function toDateDisplayFormat(timestamp: number | string): string {
 
 export function UsersListCard(props: UsersListCardProps) {
 	const { user } = props;
+
 	const [hoverRef, isHovered] = useHover();
+	const router = useRouter();
 
 	let flareClassName = bodyStyles['users-list-card-flare'];
 	if (isHovered && user.createdAt) {
@@ -62,7 +65,7 @@ export function UsersListCard(props: UsersListCardProps) {
 				description={user.description}
 				id={user.userId}
 				onClick={(e) => {
-					// getShowUser(user);
+					router.push('/user/[id]', `/user/${user.userId}`);
 				}}
 			/>
 		</div>

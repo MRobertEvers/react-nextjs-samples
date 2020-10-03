@@ -1,5 +1,5 @@
 import { UsersList } from '../views/UsersList';
 
-const UsersListPage = UsersList;
+const Page = UsersList;
 
-export default UsersListPage;
+export default Page;
