@@ -51,13 +51,13 @@ export function userApi(database: Database) {
 			Name: name
 		};
 
-		if (dob) {
+		if (typeof dob !== 'undefined') {
 			userModifications.DOB = dob;
 		}
-		if (address) {
+		if (typeof address !== 'undefined') {
 			userModifications.Address = address;
 		}
-		if (description) {
+		if (typeof description !== 'undefined') {
 			userModifications.Description = description;
 		}
 
