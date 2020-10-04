@@ -1,4 +1,5 @@
 import styles from './user-card.module.css';
+import { getUnsplashImage } from '../../utils/get-unsplash-image';
 
 const UNSPLASH_COLLECTION = '148984';
 
@@ -21,7 +22,7 @@ export function UserCard(props: UserCardProps) {
 
 	// Prevent caching with the avatar url
 	// https://source.unsplash.com/
-	const unsplashUrl = `https://source.unsplash.com/collection/${UNSPLASH_COLLECTION}/144x144?${id}`;
+	const unsplashUrl = getUnsplashImage(id);
 
 	// https://stackoverflow.com/questions/493296/css-display-an-image-resized-and-cropped
 	return (
