@@ -2,8 +2,9 @@ import * as React from 'react';
 import { Suspense, lazy } from 'react';
 import { BrowserRouter, Switch, Route, useParams } from 'react-router-dom';
 import { LoadingIndicator } from '../components/LoadingIndicator';
-const UsersList = lazy(() => import('../views/UsersList'));
-const UserProfile = lazy(() => import('../views/UserProfile'));
+
+const UsersList = lazy(() => import(/* webpackChunkName: "users-list" */ '../views/UsersList'));
+const UserProfile = lazy(() => import(/* webpackChunkName: "user-profile" */ '../views/UserProfile'));
 
 function LoadingSuspense(props: React.PropsWithChildren<{}>) {
 	const { children } = props;
@@ -27,26 +28,22 @@ function LoadingSuspense(props: React.PropsWithChildren<{}>) {
 function WrappedUserProfile() {
 	const { id } = useParams() as any;
 
-	return (
-		<LoadingSuspense>
-			<UserProfile id={id} />
-		</LoadingSuspense>
-	);
+	return <UserProfile id={id} />;
 }
 
 export function Routes() {
 	return (
 		<BrowserRouter>
-			<Switch>
-				<Route path="/" exact>
-					<LoadingSuspense>
+			<LoadingSuspense>
+				<Switch>
+					<Route path="/" exact>
 						<UsersList />
-					</LoadingSuspense>
-				</Route>
-				<Route path="/user/:id">
-					<WrappedUserProfile />
-				</Route>
-			</Switch>
+					</Route>
+					<Route path="/user/:id">
+						<WrappedUserProfile />
+					</Route>
+				</Switch>
+			</LoadingSuspense>
 		</BrowserRouter>
 	);
 }

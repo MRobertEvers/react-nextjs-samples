@@ -27,7 +27,8 @@ module.exports = {
 	output: {
 		filename: 'bundle.js',
 		publicPath: '/',
-		path: buildDirectory
+		path: buildDirectory,
+		chunkFilename: 'chunk-[name].js'
 	},
 	plugins: [
 		new HtmlWebpackPlugin({

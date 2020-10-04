@@ -2,12 +2,13 @@
 	"compilerOptions": {
 		"outDir": "./dist",
 		"sourceMap": true,
-		"module": "CommonJS",
+		"module": "ESNext",
 		"jsx": "react",
 		"esModuleInterop": true,
 		"target": "ES5",
 		"lib": ["DOM"],
-		"types": ["node"]
+		"types": ["node"],
+		"moduleResolution": "Node"
 	},
 	"include": ["src", "global.d.ts"]
 }
