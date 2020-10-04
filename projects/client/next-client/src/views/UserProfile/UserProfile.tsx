@@ -1,20 +1,16 @@
+import { useRouter } from 'next/router';
+import useSWR from 'swr';
 import type { GetServerSidePropsContext, GetServerSidePropsResult } from 'next';
-import useSWR, { mutate } from 'swr';
 
 import { LoadingIndicator } from '../../components/LoadingIndicator';
 import { fetchUser } from '../../api/fetch-user';
 import { Page } from '../../components/Page';
-import { InputLabel } from '../../components/TextInput/TextInputLabel';
-import { TextInputWithIndicators } from '../../components/TextInput/TextInputWithIndicators';
-
-import styles from './user-profile.module.css';
-import { Button } from '../../components/Button/Button';
 import ArrowBackIcon from '../../components/icons/ArrowBackIcon';
 import { IconButton } from '../../components/Button/IconButton';
-import { useRouter } from 'next/dist/client/router';
-import { fetchModifyUser } from '../../api/fetch-modify-user';
 import { UserProfileBody } from './components/UserProfileBody';
 import { UserProfileAvatar } from './components/UserProfileAvatar';
+
+import styles from './user-profile.module.css';
 
 type UserProfileProps = {
 	id: string;
@@ -52,7 +48,8 @@ export function UserProfile(props: UserProfileProps) {
 							borderRadius: '50%',
 							width: '64px',
 							height: '64px',
-							border: 'none'
+							border: 'none',
+							position: 'absolute'
 						}}
 						onClick={() => {
 							router.push('/');

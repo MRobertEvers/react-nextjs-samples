@@ -1,4 +1,4 @@
-import { useDispatch } from 'react-redux';
+import { useRouter } from 'next/router';
 import { useHover } from '../../../hooks/useHover';
 import { useFocus } from '../../../hooks/useFocus';
 import EditIcon from '../../../components/icons/EditIcon';
@@ -8,7 +8,6 @@ import type { APIUserModel } from '../../../api/fetch-users-pages';
 
 import bodyStyles from './users-list-body.module.css';
 import iconStyles from './users-list-card-icon.module.css';
-import { useRouter } from 'next/dist/client/router';
 
 interface UsersListCardProps {
 	user: APIUserModel;

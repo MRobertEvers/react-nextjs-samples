@@ -1,7 +1,6 @@
-import styles from '../user-profile.module.css';
 import { getUnsplashImage } from '../../../utils/get-unsplash-image';
 
-const UNSPLASH_COLLECTION = '148984';
+import styles from '../user-profile.module.css';
 
 type UserProfileAvatarProps = {
 	id: string;
