@@ -1,7 +1,7 @@
 import styles from './text-input.module.css';
 
 // TODO: I should omit the 'type' attribute, but that is Typescript insanity.
-type TextInputProps = React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>;
+export type TextInputProps = React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>;
 
 export function TextInput(props: TextInputProps) {
 	const { className, type, ...otherProps } = props;

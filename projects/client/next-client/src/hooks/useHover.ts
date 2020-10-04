@@ -1,34 +1,21 @@
 import { useRef, useState, useEffect } from 'react';
 
-//https://usehooks.com/useHover/
-// // Usage
-// function App() {
-//     const [hoverRef, isHovered] = useHover();
-
-//     return (
-//       <div ref={hoverRef}>
-//         {isHovered ? '😁' : '☹️'}
-//       </div>
-//     );
-//   }
-
-// Hook
-export default function useHover(): [React.MutableRefObject<any>, boolean] {
+export function useHover(): [React.MutableRefObject<any>, boolean] {
 	const [isHovered, setIsHovered] = useState(false);
 
 	const ref = useRef(null);
-
-	const handleMouseOver = () => {
-		setIsHovered(true);
-	};
-	const handleMouseOut = () => {
-		setIsHovered(false);
-	};
 
 	useEffect(
 		() => {
 			const node = ref.current;
 			if (node) {
+				const handleMouseOver = () => {
+					setIsHovered(true);
+				};
+				const handleMouseOut = () => {
+					setIsHovered(false);
+				};
+
 				node.addEventListener('mouseover', handleMouseOver);
 				node.addEventListener('mouseout', handleMouseOut);
 

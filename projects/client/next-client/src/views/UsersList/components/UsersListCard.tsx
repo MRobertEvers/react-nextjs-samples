@@ -1,5 +1,6 @@
 import { useDispatch } from 'react-redux';
-import useHover from '../../../hooks/useHover';
+import { useHover } from '../../../hooks/useHover';
+import { useFocus } from '../../../hooks/useFocus';
 import EditIcon from '../../../components/icons/EditIcon';
 import { concatClassNames } from '../../../utils/concat-classnames';
 import { UserCard } from '../../../components/UserCard/UserCard';
@@ -12,6 +13,31 @@ import { useRouter } from 'next/dist/client/router';
 interface UsersListCardProps {
 	user: APIUserModel;
 }
+
+const KEY = {
+	BACKSPACE: 8,
+	COMMA: 188,
+	DELETE: 46,
+	DOWN: 40,
+	END: 35,
+	ENTER: 13,
+	ESCAPE: 27,
+	HOME: 36,
+	LEFT: 37,
+	NUMPAD_ADD: 107,
+	NUMPAD_DECIMAL: 110,
+	NUMPAD_DIVIDE: 111,
+	NUMPAD_ENTER: 108,
+	NUMPAD_MULTIPLY: 106,
+	NUMPAD_SUBTRACT: 109,
+	PAGE_DOWN: 34,
+	PAGE_UP: 33,
+	PERIOD: 190,
+	RIGHT: 39,
+	SPACE: 32,
+	TAB: 9,
+	UP: 38
+};
 
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
@@ -32,10 +58,12 @@ export function UsersListCard(props: UsersListCardProps) {
 	const { user } = props;
 
 	const [hoverRef, isHovered] = useHover();
+	const [focusRef, isFocussed] = useFocus();
+
 	const router = useRouter();
 
 	let flareClassName = bodyStyles['users-list-card-flare'];
-	if (isHovered && user.createdAt) {
+	if ((isHovered || isFocussed) && user.createdAt) {
 		flareClassName += ` ${bodyStyles['users-list-card-flare-hover']}`;
 	}
 
@@ -45,12 +73,21 @@ export function UsersListCard(props: UsersListCardProps) {
 			<span className={bodyStyles['user-card-emphasis']}>{toDateDisplayFormat(user.createdAt)}</span>
 		</span>
 	);
-
+	const onCardSelected = () => router.push('/user/[id]', `/user/${user.userId}`);
 	return (
-		<div className={iconStyles['user-card-grid-element']}>
+		<div
+			tabIndex={0}
+			ref={focusRef}
+			className={iconStyles['user-card-grid-element']}
+			onKeyDown={(e) => {
+				if (e.which === KEY.ENTER || e.which === KEY.SPACE) {
+					onCardSelected();
+				}
+			}}
+		>
 			<EditIcon
 				className={
-					isHovered
+					isHovered || isFocussed
 						? concatClassNames(
 								iconStyles['users-list-card-edit'],
 								iconStyles['users-list-card-edit-visible']
@@ -65,7 +102,7 @@ export function UsersListCard(props: UsersListCardProps) {
 				description={user.description}
 				id={user.userId}
 				onClick={(e) => {
-					router.push('/user/[id]', `/user/${user.userId}`);
+					onCardSelected();
 				}}
 			/>
 		</div>

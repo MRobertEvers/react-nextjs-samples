@@ -21,3 +21,30 @@
 	background-size: cover;
 	border-radius: 50%;
 }
+
+.user-profile-contents {
+	margin: auto;
+	width: 50%;
+}
+.user-profile-contents > h2 {
+	margin: auto;
+	text-align: center;
+}
+
+.user-profile-input {
+	width: 100%;
+}
+
+.user-profile-input-container {
+	flex-grow: 0;
+	min-width: 400px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	margin-bottom: 12px;
+}
+
+.user-profile-input-container-footer {
+	display: flex;
+	justify-content: space-between;
+}

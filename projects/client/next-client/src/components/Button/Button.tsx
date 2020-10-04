@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import styles from './button.module.css';
 
-type ButtonProps = React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>;
+export type ButtonProps = React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>;
 
 export function Button(props: React.PropsWithChildren<ButtonProps>) {
 	const { children, className, ...otherProps } = props;

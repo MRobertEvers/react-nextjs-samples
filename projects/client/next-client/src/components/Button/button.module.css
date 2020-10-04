@@ -1,5 +1,6 @@
 .default-button {
 	border: 3px solid rgb(229, 229, 229);
+	fill: rgb(229, 229, 229);
 	width: 176px;
 	height: 52px;
 	font-family: 'Source Sans Pro', sans-serif;
@@ -17,9 +18,11 @@
 
 .default-button:hover:enabled {
 	border: 3px solid rgb(153, 153, 153);
+	fill: rgb(153, 153, 153);
 }
 
 .default-button:focus:enabled {
 	outline: none;
 	border: 3px solid rgb(128, 128, 128);
+	fill: rgb(128, 128, 128);
 }
