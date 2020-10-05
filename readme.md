@@ -22,3 +22,7 @@ Content-Type: application/json
 ```
 
 Choose which client you want to run, navigate to that project folder, then run `npm start`.
+
+## Branches
+
+There are two brances in this project. The `master` branch compares vanilla react with nextjs including code-splitting. The `vanilla-no-lazy` is the same example without code splitting in the vanilla react client.
