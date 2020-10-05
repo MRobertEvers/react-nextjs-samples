@@ -19,7 +19,11 @@ module.exports = {
 	resolve: {
 		extensions: ['.ts', '.tsx', '.js', '.jsx'],
 		// Absolute paths to where modules can be resolved.
-		modules: [sourceDirectory, modulesDirectory]
+		modules: [sourceDirectory, modulesDirectory],
+		alias: {
+			'react-dom$': 'react-dom/profiling',
+			'scheduler/tracing': 'scheduler/tracing-profiling'
+		}
 	},
 	output: {
 		publicPath: '/',

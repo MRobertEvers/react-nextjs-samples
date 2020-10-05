@@ -2,6 +2,8 @@ import * as React from 'react';
 import { Suspense, lazy } from 'react';
 import { BrowserRouter, Switch, Route, useParams } from 'react-router-dom';
 import { LoadingIndicator } from '../components/LoadingIndicator';
+import { High } from '../views/RenderTest/High';
+import { Low } from '../views/RenderTest/Low';
 
 const UsersList = lazy(() => import(/* webpackChunkName: "users-list" */ '../views/UsersList'));
 const UserProfile = lazy(() => import(/* webpackChunkName: "user-profile" */ '../views/UserProfile'));
@@ -41,6 +43,12 @@ export function Routes() {
 					</Route>
 					<Route path="/user/:id">
 						<WrappedUserProfile />
+					</Route>
+					<Route path="/high">
+						<High />
+					</Route>
+					<Route path="/low">
+						<Low />
 					</Route>
 				</Switch>
 			</LoadingSuspense>
