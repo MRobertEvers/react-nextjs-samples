@@ -1,4 +1,5 @@
 import * as Sequelize from 'sequelize';
+import type { Tag } from './tag';
 
 export class User extends Sequelize.Model {
 	public UserId!: number;
@@ -8,6 +9,8 @@ export class User extends Sequelize.Model {
 	public Description!: string;
 	public CreatedAt!: string;
 	public UpdatedAt!: string;
+
+	public readonly Tag?: Tag[];
 }
 
 const TABLE_NAME = 'User';

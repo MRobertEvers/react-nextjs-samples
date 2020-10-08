@@ -1,8 +1,8 @@
 import { Router } from 'express';
 import bodyParser from 'body-parser';
 import { Request, Response, NextFunction } from 'express';
-import { Database } from '../../database/database';
-import { mapKeysToLower } from '../../utils/map-keys-to-lower';
+import { Database } from '../../../database/database';
+import { mapKeysToLower } from '../../../utils/map-keys-to-lower';
 
 export function userApi(database: Database) {
 	const { User } = database;
@@ -31,6 +31,7 @@ export function userApi(database: Database) {
 		});
 
 		res.status(200);
+		res.setHeader('Content-Type', 'application/json');
 		res.send(JSON.stringify(mapKeysToLower(user.toJSON())));
 	});
 

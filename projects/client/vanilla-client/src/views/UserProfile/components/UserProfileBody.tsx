@@ -14,6 +14,7 @@ type UserProfileBodyProps = {
 	name: string;
 	description: string;
 	address: string;
+	tags: string;
 };
 export function UserProfileBody(props: UserProfileBodyProps) {
 	const { name, description, address, userId } = props;

@@ -6,7 +6,7 @@ import { Op } from 'sequelize';
 import { mapKeysToLower } from '../../utils/map-keys-to-lower';
 
 export function usersApi(database: Database) {
-	const { User } = database;
+	const { User, Tag } = database;
 
 	const app = Router();
 
@@ -35,10 +35,12 @@ export function usersApi(database: Database) {
 					[Op.gte]: parseInt(pageStart as string)
 				}
 			},
-			limit: parseInt(pageSize as string)
+			limit: parseInt(pageSize as string),
+			include: [Tag]
 		});
 
 		res.status(200);
+		res.setHeader('Content-Type', 'application/json');
 		res.send(JSON.stringify(users.map((user) => mapKeysToLower(user.toJSON()))));
 	});
 
