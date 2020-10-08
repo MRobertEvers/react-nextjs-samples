@@ -5,12 +5,12 @@ import { Database } from '../../database/database';
 import { mapKeysToLower } from '../../utils/map-keys-to-lower';
 
 export function tagsApi(database: Database) {
-	const { User } = database;
+	const { Tag } = database;
 
 	const app = Router();
 
 	app.use(bodyParser.json());
-	app.options('/users/:id', async (req: Request, res: Response) => {
+	app.options('/tags/:id', async (req: Request, res: Response) => {
 		res.status(200);
 		res.setHeader('Access-Control-Allow-Origin', '*');
 		res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
@@ -25,9 +25,9 @@ export function tagsApi(database: Database) {
 	app.get('/tags/:id', async (req: Request, res: Response) => {
 		const { id } = req.params;
 
-		const user = await User.findOne({
+		const user = await Tag.findOne({
 			where: {
-				UserId: parseInt(id)
+				TagId: parseInt(id)
 			}
 		});
 
