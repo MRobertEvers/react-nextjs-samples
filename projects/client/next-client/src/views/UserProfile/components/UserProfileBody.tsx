@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { mutate } from 'swr';
 import { Button } from '../../../components/Button/Button';
@@ -13,9 +14,12 @@ type UserProfileBodyProps = {
 	name: string;
 	description: string;
 	address: string;
+	tags: Array<{ tagId: string; description: string }>;
 };
 export function UserProfileBody(props: UserProfileBodyProps) {
-	const { name, description, address, userId } = props;
+	const { name, description, address, userId, tags } = props;
+
+	const router = useRouter();
 
 	const [editName, setEditName] = useState(name);
 	const [editAddress, setEditAddress] = useState(address);
@@ -28,6 +32,23 @@ export function UserProfileBody(props: UserProfileBodyProps) {
 			<h2>
 				<span>{name.toUpperCase()}</span>
 			</h2>
+			<div className={styles['user-profile-tag-container']}>
+				{tags.map((tag) => {
+					return (
+						<Button
+							style={{
+								borderRadius: '24px',
+								margin: 'auto'
+							}}
+							onClick={() => {
+								router.push(`/user/${userId}/tags/${tag.tagId}`);
+							}}
+						>
+							{tag.description}
+						</Button>
+					);
+				})}
+			</div>
 			<div className={styles['user-profile-input-container']}>
 				<div>
 					<InputLabel htmlFor="name">Name</InputLabel>
