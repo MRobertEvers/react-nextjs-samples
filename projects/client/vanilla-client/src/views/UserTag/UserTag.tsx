@@ -20,7 +20,8 @@ export function UserTag(props: UserSloganProps) {
 	const router = useHistory();
 
 	const { data, error } = useSWR(`/tag/${tagId}`, async (key: string) => {
-		return await fetchTag(tagId);
+		// return await fetchTag(tagId);
+		return {} as any;
 	});
 
 	let body;

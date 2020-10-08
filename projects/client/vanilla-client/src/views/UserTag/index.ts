@@ -1,1 +1,1 @@
-export { UserSlogan as default } from './UserSlogan';
+export { UserTag as default } from './UserTag';

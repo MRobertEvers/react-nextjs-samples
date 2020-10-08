@@ -32,6 +32,14 @@
 	text-align: center;
 }
 
+.user-profile-tag-container {
+}
+
+.user-profile-tag {
+	border-radius: 24px;
+	height: 48px;
+}
+
 .user-profile-input {
 	width: 100%;
 }

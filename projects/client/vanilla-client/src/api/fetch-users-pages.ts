@@ -13,6 +13,8 @@ export interface APIUserModel {
 	description?: string;
 	createdAt?: number;
 	updatedAt?: number;
+
+	tags: Array<{ tagId: string; description: string }>;
 }
 
 export type FetchGetPagesResult = APIUserModel[];

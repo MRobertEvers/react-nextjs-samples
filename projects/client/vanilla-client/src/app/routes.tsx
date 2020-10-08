@@ -42,8 +42,8 @@ export function Routes() {
 					<Route path="/user/:id">
 						<WrappedUserProfile />
 					</Route>
-					<Route path="/user/:id/slogans/:tagId">
-						<WrappedUserSlogans />
+					<Route path="/user/:id/tags/:tagId">
+						<div>wow</div>
 					</Route>
 				</Switch>
 			</LoadingSuspense>

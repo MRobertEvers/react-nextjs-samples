@@ -1,15 +1,16 @@
 export function mapKeysToLower(object: { [x: string]: any }): { [x: string]: any } {
 	const newObject: { [x: string]: any } = {};
 
-	for (const key in object) {
+	const stringly = JSON.parse(JSON.stringify(object));
+	for (const key in stringly) {
 		const newKey = key[0].toLowerCase() + key.substr(1);
 
-		if (Array.isArray(object[key])) {
-			newObject[newKey] = object[key].map((item) => mapKeysToLower(item));
-		} else if (typeof object[key] === 'object') {
-			newObject[newKey] = mapKeysToLower(object[key]);
+		if (Array.isArray(stringly[key])) {
+			newObject[newKey] = stringly[key].map((item) => mapKeysToLower(item));
+		} else if (stringly[key] && typeof stringly[key] === 'object') {
+			newObject[newKey] = mapKeysToLower(stringly[key]);
 		} else {
-			newObject[newKey] = object[key];
+			newObject[newKey] = stringly[key];
 		}
 	}
 

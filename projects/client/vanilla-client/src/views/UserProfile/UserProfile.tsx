@@ -35,8 +35,16 @@ export function UserProfile(props: UserProfileProps) {
 			/>
 		);
 	} else if (!error) {
-		const { name, description, address } = data;
-		body = <UserProfileBody userId={id} name={name} description={description || ''} address={address || ''} />;
+		const { name, description, address, tags } = data;
+		body = (
+			<UserProfileBody
+				userId={id}
+				name={name}
+				description={description || ''}
+				address={address || ''}
+				tags={tags}
+			/>
+		);
 	}
 	return (
 		<Page title="Profile">
