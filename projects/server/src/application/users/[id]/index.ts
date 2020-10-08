@@ -5,7 +5,7 @@ import { Database } from '../../../database/database';
 import { mapKeysToLower } from '../../../utils/map-keys-to-lower';
 
 export function userApi(database: Database) {
-	const { User } = database;
+	const { User, Tag } = database;
 
 	const app = Router();
 
@@ -27,7 +27,8 @@ export function userApi(database: Database) {
 		const user = await User.findOne({
 			where: {
 				UserId: parseInt(id)
-			}
+			},
+			include: [Tag]
 		});
 
 		res.status(200);
