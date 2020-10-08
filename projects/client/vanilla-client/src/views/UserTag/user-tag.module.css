@@ -31,23 +31,10 @@
 .user-tag-contents > h2 {
 	margin: auto;
 	text-align: center;
+	margin: 20px;
 }
 
-.user-tag-input {
-	width: 100%;
-}
-
-.user-tag-input-container {
-	flex-grow: 0;
-	min-width: 400px;
+.user-tag-body {
 	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	margin-bottom: 12px;
-}
-
-.user-tag-input-container-footer {
-	min-width: 400px;
-	display: flex;
-	justify-content: space-between;
+	justify-content: center;
 }

@@ -36,14 +36,17 @@ export function UserProfileBody(props: UserProfileBodyProps) {
 			<div className={styles['user-profile-tag-container']}>
 				{tags.map((tag) => {
 					return (
-						<div
-							className={styles['user-profile-tag']}
+						<Button
+							style={{
+								borderRadius: '24px',
+								margin: 'auto'
+							}}
 							onClick={() => {
 								router.push(`/user/${userId}/tags/${tag.tagId}`);
 							}}
 						>
 							{tag.description}
-						</div>
+						</Button>
 					);
 				})}
 			</div>

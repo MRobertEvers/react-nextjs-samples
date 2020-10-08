@@ -5,6 +5,7 @@ import { LoadingIndicator } from '../components/LoadingIndicator';
 
 const UsersList = lazy(() => import(/* webpackChunkName: "users-list" */ '../views/UsersList'));
 const UserProfile = lazy(() => import(/* webpackChunkName: "user-profile" */ '../views/UserProfile'));
+const UserTag = lazy(() => import(/* webpackChunkName: "user-tag" */ '../views/UserTag'));
 
 function LoadingSuspense(props: React.PropsWithChildren<{}>) {
 	const { children } = props;
@@ -31,6 +32,12 @@ function WrappedUserProfile() {
 	return <UserProfile id={id} />;
 }
 
+function WrappedUserTag() {
+	const { id, tagId } = useParams() as any;
+
+	return <UserTag userId={id} tagId={tagId} />;
+}
+
 export function Routes() {
 	return (
 		<BrowserRouter>
@@ -39,11 +46,11 @@ export function Routes() {
 					<Route path="/" exact>
 						<UsersList />
 					</Route>
-					<Route path="/user/:id">
+					<Route path="/user/:id" exact>
 						<WrappedUserProfile />
 					</Route>
 					<Route path="/user/:id/tags/:tagId">
-						<div>wow</div>
+						<WrappedUserTag />
 					</Route>
 				</Switch>
 			</LoadingSuspense>

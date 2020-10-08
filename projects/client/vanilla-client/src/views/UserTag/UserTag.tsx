@@ -6,22 +6,27 @@ import { Page } from '../../components/Page';
 import { LoadingIndicator } from '../../components/LoadingIndicator';
 import { IconButton } from '../../components/Button/IconButton';
 import ArrowBackIcon from '../../components/icons/ArrowBackIcon';
+import { fetchTag } from '../../api/fetch-tag';
 
-import styles from './user-slogans.module.css';
+import styles from './user-tag.module.css';
+import { Button } from '../../components/Button/Button';
+import { fetchUser } from '../../api/fetch-user';
 
-type UserSloganProps = {
+type UserTagProps = {
 	userId: string;
 	tagId: string;
 };
 
-export function UserTag(props: UserSloganProps) {
+export function UserTag(props: UserTagProps) {
 	const { userId, tagId } = props;
 
 	const router = useHistory();
 
 	const { data, error } = useSWR(`/tag/${tagId}`, async (key: string) => {
-		// return await fetchTag(tagId);
-		return {} as any;
+		return {
+			tag: await fetchTag(tagId),
+			user: await fetchUser(userId)
+		};
 	});
 
 	let body;
@@ -36,8 +41,18 @@ export function UserTag(props: UserSloganProps) {
 			/>
 		);
 	} else if (!error) {
-		const { description, dateCreated } = data;
-		body = <div>{description}</div>;
+		const { description } = data.tag;
+		const { name } = data.user;
+		body = (
+			<div className={styles['user-tag-contents']}>
+				<h2>
+					<span>{name.toUpperCase()}</span>
+				</h2>
+				<div className={styles['user-tag-body']}>
+					<Button>{description}</Button>
+				</div>
+			</div>
+		);
 	}
 
 	return (
