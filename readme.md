@@ -1,6 +1,6 @@
 # Nextjs and Vanilla React
 
-This project was created as source material for an informative podcast. The images are pulled randomly from [unsplash.com].
+This project was created as source material for an informative podcast. The images are pulled randomly from [Unsplash](unsplash.com).
 
 There are two client projects with the same features. All front-end clients use the backend found in `server` backend.
 
