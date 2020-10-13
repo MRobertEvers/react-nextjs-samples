@@ -1,14 +1,16 @@
 import * as React from 'react';
 import { useState } from 'react';
 import { mutate } from 'swr';
+import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { Button } from '../../../components/Button/Button';
 import { LoadingIndicator } from '../../../components/LoadingIndicator';
 import { fetchModifyUser } from '../../../api/fetch-modify-user';
 import { InputLabel } from '../../../components/TextInput/TextInputLabel';
 import { TextInputWithIndicators } from '../../../components/TextInput/TextInputWithIndicators';
+import { UsersListActions } from '../../UsersList/redux/users-list.actions';
 
 import styles from '../user-profile.module.css';
-import { useHistory } from 'react-router-dom';
 
 type UserProfileBodyProps = {
 	userId: string;
@@ -21,6 +23,7 @@ export function UserProfileBody(props: UserProfileBodyProps) {
 	const { name, description, address, userId, tags } = props;
 
 	const router = useHistory();
+	const dispatch = useDispatch();
 
 	const [editName, setEditName] = useState(name);
 	const [editAddress, setEditAddress] = useState(address);
@@ -37,6 +40,7 @@ export function UserProfileBody(props: UserProfileBodyProps) {
 				{tags.map((tag) => {
 					return (
 						<Button
+							key={tag.tagId}
 							style={{
 								borderRadius: '24px',
 								margin: 'auto'
@@ -95,7 +99,19 @@ export function UserProfileBody(props: UserProfileBodyProps) {
 						setIsLoading(true);
 						await fetchModifyUser(userId, editName, '', editAddress, editDescription);
 						setIsLoading(false);
+
+						// This will cause the SWR to re-validate for the profile.
 						mutate(`/users/${userId}`);
+
+						// Update the cached user data.
+						dispatch(
+							UsersListActions.editCachedUser({
+								userId: parseInt(userId),
+								description: editDescription,
+								name: editName,
+								address: editAddress
+							})
+						);
 					}}
 				>
 					{!isLoading ? (

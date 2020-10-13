@@ -1,5 +1,6 @@
 import { createAsyncThunk, createAction } from '@reduxjs/toolkit';
-import { FetchGetPagesResult, fetchGetPages } from '../../../api/fetch-users-pages';
+import { APIUserModel } from '../../../api/api-types';
+import { fetchGetPages, FetchGetPagesResult } from '../../../api/fetch-users-pages';
 import { RootState } from '../../../store/root-state.types';
 
 const PAGE_SIZE = 6;
@@ -38,8 +39,11 @@ const getNextPage = createAsyncThunk<GetPagesThunkResult, void, { state: RootSta
 	}
 );
 
+export type EditCachedUser = Partial<APIUserModel> & Pick<APIUserModel, 'userId'>;
+
 export const UsersListActions = {
 	getPages: getPages,
 	getNextPage: getNextPage,
-	setFilter: createAction<string>('usersList/setFilter')
+	setFilter: createAction<string>('usersList/setFilter'),
+	editCachedUser: createAction<EditCachedUser>('usersList/editCachedUser'),
 };

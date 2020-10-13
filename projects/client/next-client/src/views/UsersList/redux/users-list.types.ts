@@ -1,7 +1,7 @@
-import type { APINextToken, APIUserModel } from '../../../api/fetch-users-pages';
+import { APINextToken, APIUserModel } from "../../../api/api-types";
 
 export type UsersListStateUserMap = {
-	[x: string]: APIUserModel;
+	[x: number]: APIUserModel;
 };
 
 export type UsersListSlice = {

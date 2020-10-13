@@ -4,7 +4,7 @@ import { useFocus } from '../../../hooks/useFocus';
 import EditIcon from '../../../components/icons/EditIcon';
 import { concatClassNames } from '../../../utils/concat-classnames';
 import { UserCard } from '../../../components/UserCard/UserCard';
-import type { APIUserModel } from '../../../api/fetch-users-pages';
+import { APIUserModel } from '../../../api/api-types';
 
 import bodyStyles from './users-list-body.module.css';
 import iconStyles from './users-list-card-icon.module.css';
@@ -99,7 +99,7 @@ export function UsersListCard(props: UsersListCardProps) {
 				flare={userFlare}
 				name={user.name}
 				description={user.description}
-				id={user.userId}
+				id={user.userId.toString()}
 				onClick={(e) => {
 					onCardSelected();
 				}}

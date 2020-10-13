@@ -1,6 +1,6 @@
 import { promiseTimeout } from '../utils/promise-timeout';
+import { APIUserModel } from './api-types';
 import { REST_API } from './backend-host';
-import { APIUserModel } from './fetch-users-pages';
 
 export type FetchTagResult = APIUserModel['tags'][0];
 

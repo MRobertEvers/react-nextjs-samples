@@ -59,5 +59,16 @@ export const usersListSlice = createSlice({
 			.addCase(UsersListActions.setFilter, (slice, action) => {
 				const newFilter = action.payload;
 				slice.filter = newFilter;
+			})			
+			.addCase(UsersListActions.editCachedUser, (slice, action) => {
+				const modifiedUser = action.payload;
+				const currentUser = slice.users[modifiedUser.userId];
+
+				const newUserState = {
+					...currentUser,
+					...modifiedUser
+				};
+
+				slice.users[modifiedUser.userId] = newUserState;
 			})
 });

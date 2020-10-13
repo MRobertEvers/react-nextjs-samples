@@ -64,7 +64,7 @@ export function UserProfile(props: UserProfileProps) {
 						}}
 					/>
 				</div>
-				<UserProfileAvatar id={data?.userId || ''} />
+				<UserProfileAvatar id={data?.userId.toString() || ''} />
 				{body}
 			</div>
 		</Page>
