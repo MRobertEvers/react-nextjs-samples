@@ -1,8 +1,14 @@
 # Nextjs and Vanilla React
 
-This project was created as source material for an informative podcast.
+This project was created as source material for an informative podcast. The images are pulled randomly from [unsplash.com].
 
-There are two projects with the same features. All front-ends use the backend found in `server` backend.
+There are two client projects with the same features. All front-end clients use the backend found in `server` backend.
+
+## Preview
+
+Once you get the client and server running. You should see something like this...
+
+![interaction](res/interaction.gif)
 
 ## Installation
 
