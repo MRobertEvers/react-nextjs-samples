@@ -1,28 +1,15 @@
 # Nextjs Client
 
-## Redux
+# Next Client
 
-The client uses redux to manage much of the state.
+This is the Nextjs version of the client.
 
-The root redux state is in `src/root-state.types.ts`.
+## Installation
 
-For each slice, the slice is in a `redux` folder.
+Simply run `npm install` in this directory.
 
-It is organized
+## Usage
 
-```
-redux\
-    [slice-name].types.ts
-    [slice-name].actions.ts
-    [slice-name].slice.ts
-```
+You can start the Nextjs development server with `npm start`. This will start the client on `localhost:3000`.
 
-The root state imports `[slice-name].types.ts`.
-
-The order of imports below
-
-```
-root-state.types.ts < [slice-name].types.ts
-[slice-name].slice.ts < [slice-name].actions.ts < [slice-name].types.ts
-[slice-name].slice.ts < [slice-name].types.ts
-```
+For a production like environment, please refer to the Nextjs website.
