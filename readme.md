@@ -8,7 +8,7 @@ There are two client projects with the same features. All front-end clients use 
 
 Once you get the client and server running. You should see something like this...
 
-![interaction](res/interaction.gif)
+![interaction](res/page-interaction.gif)
 
 ## Installation
 
